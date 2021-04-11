@@ -77,28 +77,30 @@ async def data_send():
 @commands.cooldown(rate=1, per=3600, type=commands.BucketType.user)
 @bot.command()
 async def vote(ctx,user: discord.Member,x: str):
-    if user == ctx.author:
-        ctx.command.reset_cooldown(ctx)
-        await ctx.send("this is you, you cant")
-    elif user.bot:
-        ctx.command.reset_cooldown(ctx)
-        await ctx.send("this is bot...")
-        
-    else:
-        cur.execute(f"select score from lb where id={user.id}")
-        d=cur.fetchone()[0]
-        if x == "+":
-            f=d+1
-        elif x == "-":
-            f=d-1
-        else:
+    try:
+        if user == ctx.author:
             ctx.command.reset_cooldown(ctx)
-            raise discord.ext.commands.ArgumentParsingError("Wrong arguments.\nUsage: `-vote @member +/-`\nFor example:`-vote <@784785353533554688> -`")
-        cur.execute(f"update lb set score={f} where id={user.id}")
-        print('pass')
-        await ctx.send("voted")
-    cn.commit()
+            await ctx.send("this is you, you cant")
+        elif user.bot:
+            ctx.command.reset_cooldown(ctx)
+            await ctx.send("this is bot...")
 
+        else:
+            cur.execute(f"select score from lb where id={user.id}")
+            d=cur.fetchone()[0]
+            if x == "+":
+                f=d+1
+            elif x == "-":
+                f=d-1
+            else:
+                ctx.command.reset_cooldown(ctx)
+                await ctx.send("Wrong arguments.\nUsage: `-vote @member +/-`\nFor example:`-vote <@784785353533554688> -`")
+            cur.execute(f"update lb set score={f} where id={user.id}")
+            print('pass')
+            await ctx.send("voted")
+        cn.commit()
+    except(discord.ext.commands.ArgumentParsingError,discord.ext.commands.MissingRequiredArgument) as e:
+        await ctx.send(e)
 
 
 
