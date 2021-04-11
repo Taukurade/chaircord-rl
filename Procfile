@@ -1,2 +1,2 @@
-web: gunicorn chaircord-rl:app
+web: gunicorn wsgi:app
 worker: python3 sockbot.py
