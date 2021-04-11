@@ -34,7 +34,7 @@ bot.remove_command("help")
 def get_members():
     mlistx=[]
     global mlist
-    for member in bot.get_guild(806209406860656672).members:
+    for member in bot.get_guild(824959091532890133).members:
         cur.execute(f"select score from 'lb' where id={member.id}")
         if cur.fetchone() == None:
             cur.execute(f"insert into lb values ({member.id}, 0)")
