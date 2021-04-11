@@ -1,2 +1,2 @@
 web: python3 main.py
-bot: python3 sockbot.py
+worker: python3 sockbot.py
