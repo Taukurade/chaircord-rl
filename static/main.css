@@ -1,0 +1,36 @@
+body{
+    font-family: Ubuntu, "times new roman", times, roman, serif;
+    background-color: rgb(43, 96, 121);
+    margin: 0;
+    margin-top: 1.5%;
+}
+div.f-table{
+    margin-left: 14%;
+    margin-right: 14%;
+    padding: 6px;
+    padding-left: 10px;
+    margin-bottom: 6px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 500em;
+    overflow : hidden;
+}
+img.pfp{
+    max-width: 100px;
+    height:auto;
+    border-radius: 500em;
+    background-color: black;
+}
+h1.nname{
+    margin-left: 125px;
+    font-size: 14pt;
+}
+.rl{
+    padding-left: 3px;
+    padding-right: 3px;
+    font-size: 14pt;
+    display: inline-block;
+    border: 1px solid;border-radius: 500em;
+}
+.rl::before{
+    margin-left: 10px;
+}
