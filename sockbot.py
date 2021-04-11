@@ -71,7 +71,7 @@ async def on_ready():
 @tasks.loop(seconds=10)
 async def data_send():
     get_members()
-    r=requests.post("http://192.168.0.102:4402/webhook/leaderboardoikjrngWPOIURGBLREGOVCQNHREWQLIGFPWQOHRUCGTEQR", headers={'Content-Type':'application/json'}, data=mlist)
+    r=requests.post("http://127.0.0.1:80/webhook/leaderboardoikjrngWPOIURGBLREGOVCQNHREWQLIGFPWQOHRUCGTEQR", headers={'Content-Type':'application/json'}, data=mlist)
     #print(r)
 
 @commands.cooldown(rate=1, per=3600, type=commands.BucketType.user)
