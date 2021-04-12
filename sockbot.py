@@ -100,6 +100,7 @@ async def vote(ctx,user: discord.Member,x: str):
             await ctx.send("voted")
         cn.commit()
     except(discord.ext.commands.ArgumentParsingError,discord.ext.commands.MissingRequiredArgument) as e:
+        ctx.command.reset_cooldown(ctx)
         await ctx.send(e)
 
 
@@ -110,10 +111,13 @@ async def v_error(ctx, error):
         msg = 'This command is ratelimited, please try again in {:.0f}m'.format((error.retry_after/60))
         await ctx.send(f"`{msg}`")
     elif isinstance(error, discord.ext.commands.MissingRequiredArgument):
+        ctx.command.reset_cooldown(ctx)
         await ctx.send(f"Not enough arguments.\nUsage: `-vote @member +/-`\nFor example:`-vote <@784785353533554688> -`")
     elif isinstance(error, discord.ext.commands.ArgumentParsingError):
+        ctx.command.reset_cooldown(ctx)
         await ctx.send(error)
     else:
+        ctx.command.reset_cooldown(ctx)
         raise error
 
 @bot.command()
