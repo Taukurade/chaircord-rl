@@ -11,11 +11,12 @@ div.f-table{
     padding-left: 10px;
     margin-bottom: 6px;
     background-color: rgb(255, 255, 255);
-    border-radius: 500em;
+    border-radius: .25rem;
     overflow : hidden;
 }
 img.pfp{
     max-width: 100px;
+    min-width: 100px;
     height:auto;
     border-radius: 500em;
     background-color: black;
