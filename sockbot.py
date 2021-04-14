@@ -25,7 +25,7 @@ cur = cn.cursor()
 #y = tr.Thread(target=get_members,daemon=True)
 
 #l = tr.Thread(target=run, daemon=True)
-cur.execute("select token, default_cfg from 'bot data'")
+cur.execute("SELECT token, default_cfg FROM \"bot data\";")
 token = cur.fetchone()[0]
 intents = discord.Intents().all()
 
@@ -36,13 +36,13 @@ def get_members():
     mlistx=[]
     global mlist
     for member in bot.get_guild(824959091532890133).members:
-        cur.execute(f"select score from 'lb' where id={member.id}")
+        cur.execute(f"SELECT score FROM 'lb' WHERE id={member.id}")
         if cur.fetchone() == None:
-            cur.execute(f"insert into lb values ({member.id}, 0)")
-            cur.execute(f"select score from 'lb' where id={member.id}")
+            cur.execute(f"INSERT INTO lb VALUES ({member.id}, 0)")
+            cur.execute(f"SELECT score FROM 'lb' WHERE id={member.id}")
             score=cur.fetchone()[0]
         else:
-            cur.execute(f"select score from 'lb' where id={member.id}")
+            cur.execute(f"SELECT score FROM 'lb' WHERE id={member.id}")
             score=cur.fetchone()[0]
         mname=f"{member.name}#{member.discriminator}"
         aurl=(str(member.avatar_url))
@@ -87,7 +87,7 @@ async def vote(ctx,user: discord.Member,x: str):
             await ctx.send("this is bot...")
 
         else:
-            cur.execute(f"select score from lb where id={user.id}")
+            cur.execute(f"SELECT score FROM lb WHERE id={user.id}")
             d=cur.fetchone()[0]
             if x == "+":
                 f=d+1
@@ -96,7 +96,7 @@ async def vote(ctx,user: discord.Member,x: str):
             else:
                 ctx.command.reset_cooldown(ctx)
                 await ctx.send("Wrong arguments.\nUsage: `-vote @member +/-`\nFor example:`-vote <@784785353533554688> -`")
-            cur.execute(f"update lb set score={f} where id={user.id}")
+            cur.execute(f"UPDATE lb SET score={f} WHERE id={user.id}")
             print('pass')
             await ctx.send("voted")
         cn.commit()
