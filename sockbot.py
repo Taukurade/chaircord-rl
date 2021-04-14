@@ -36,13 +36,13 @@ def get_members():
     mlistx=[]
     global mlist
     for member in bot.get_guild(824959091532890133).members:
-        cur.execute(f"SELECT score FROM 'lb' WHERE id={member.id}")
+        cur.execute(f"SELECT score FROM lb WHERE id={member.id}")
         if cur.fetchone() == None:
             cur.execute(f"INSERT INTO lb VALUES ({member.id}, 0)")
-            cur.execute(f"SELECT score FROM 'lb' WHERE id={member.id}")
+            cur.execute(f"SELECT score FROM lb WHERE id={member.id}")
             score=cur.fetchone()[0]
         else:
-            cur.execute(f"SELECT score FROM 'lb' WHERE id={member.id}")
+            cur.execute(f"SELECT score FROM lb WHERE id={member.id}")
             score=cur.fetchone()[0]
         mname=f"{member.name}#{member.discriminator}"
         aurl=(str(member.avatar_url))
