@@ -9,7 +9,7 @@ import threading as tr
 import os
 import asyncio
 import requests
-
+import psycopg2
 mlist=[]
 
 
@@ -18,8 +18,9 @@ mlist=[]
 #const
 
 
+DATABASE_URL = os.environ['DATABASE_URL']
 
-cn = sqlite3.connect("secret") # или :memory:
+cn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cur = cn.cursor()
 #y = tr.Thread(target=get_members,daemon=True)
 
