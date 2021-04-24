@@ -1,37 +1,39 @@
 body{
     font-family: Ubuntu, "times new roman", times, roman, serif;
     background-color: rgb(43, 96, 121);
-    margin: 0;
-    margin-top: 1.5%;
 }
-div.f-table{
-    margin-left: 14%;
-    margin-right: 14%;
-    padding: 6px;
-    padding-left: 10px;
-    margin-bottom: 6px;
-    background-color: rgb(255, 255, 255);
-    border-radius: .25rem;
-    overflow : hidden;
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1em;
+    font-family: sans-serif;
+    min-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
 }
-img.pfp{
-    max-width: 100px;
-    min-width: 100px;
-    height:auto;
-    border-radius: 500em;
-    background-color: black;
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
 }
-h1.nname{
-    margin-left: 125px;
-    font-size: 14pt;
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
 }
-.rl{
-    padding-left: 3px;
-    padding-right: 3px;
-    font-size: 14pt;
-    display: inline-block;
-    border: 1px solid;border-radius: 500em;
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
 }
-.rl::before{
-    margin-left: 10px;
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
 }
