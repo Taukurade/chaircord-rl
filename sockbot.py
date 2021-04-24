@@ -48,8 +48,6 @@ def get_members():
         aurl=(str(member.avatar_url))
         rls=[]
         for role in member.roles:
-            if role.name == "@everyone":
-                continue
             rname=str(role.name)
             rcol=str(role.color)
             rls.append({'name':rname,'color':rcol})
