@@ -18,14 +18,16 @@
                 <th>Points</th>
             </tr>
         </thead>
-        {% for member in members %}
+        
         <tbody>
+            {% for member in members %}
             <tr>
                 <td style="color:{{member['roles'][0]['color']}}">{{member['name']}}</td>
                 <td>{{member['score']}}</td>
             </tr>
+            {% endfor %}
         </tbody>
-        {% endfor %}
+        
     </table>
 
 
