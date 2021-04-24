@@ -5,24 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
-    <link rel= "stylesheet" type= "text/css" href= "https://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <link rel= "stylesheet" type= "text/css" href= "http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
     <link rel= "stylesheet" type= "text/css" href= "../static/main.css"><!--FOR DEBUG-->
     <title>Chaircord rating</title>
 </head>
 <body>
-    {% for member in members %}
-    <div class="f-table">
-        <img class="pfp"src="{{member['a_urls']}}" alt="{{member['name']}}" align="left">
-        <h1 class="nname">{{member['name']}}</h1>
-        <h1 style="text-align:right;font-size: 14pt;margin-right: 25px;">{{member['score']}}points</h1>
-        <ul>
-            {% for role in member['roles'] %}
-            <li class="rl" style="color:{{role['color']}}">{{role['name']}}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endfor %}
-    
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        {% for member in members %}
+        <tbody>
+            <tr>
+                <td style="color:{{member['roles'][0]['color']}}">{{member['name']}}</td>
+                <td>{{member['score']}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
 
 
 </body>
